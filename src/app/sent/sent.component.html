@@ -1,0 +1,27 @@
+<div class="container containerClass">
+  <app-header></app-header>
+  <div class="row">
+    <div class="col-md-2">
+      <app-sidemenu></app-sidemenu>
+    </div>
+    <div class="col-md-10">
+      <table class="table table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Title</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of sentData; let i = index" [routerLink]="['/viewMail', data.id]">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{data.firstName}} {{data.lastName}} {{data.subject}}</td>
+            <td>{{data.createdAt}}</td>
+          </tr>
+          <div *ngIf="sentData.length == 0">No Record Found</div>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

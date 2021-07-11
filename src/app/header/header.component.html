@@ -1,0 +1,15 @@
+<!-- header start -->
+<div class="row m-3 justify-content-between">
+  <div class="title">
+    Mail Service
+  </div>
+  <div class="switch-section">
+    <span class="mr-3 text-nowrap">Switch Account</span>
+    <select [ngModel]="selectedUser" class="custom-select" name="swichAccount" id="swichAccount" (change)="onChangeUser($event.target.value);">
+      <option *ngFor="let data of accountData" value="{{data.userId}}">
+        {{ data.firstName }} {{ data.lastName }}
+      </option>
+    </select>
+  </div>
+</div>
+<!-- header end-->

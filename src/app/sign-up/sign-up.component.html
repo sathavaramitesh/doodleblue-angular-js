@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center mb-3">
+            <span class="login-text">Sign Up</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <form [formGroup]='signupForm' (ngSubmit)="submit()" autocomplete="off">
+                <div class="form-group">
+                    <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && s.firstName.errors }" 
+                    formControlName='firstName' id='firstName' placeholder="First Name">
+
+                    <div *ngIf="submitted && s.firstName.errors" class="invalid-feedback" class="alert alert-danger">
+                        <div *ngIf="s.firstName.errors.required">
+                            First name is required*
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && s.lastName.errors }" 
+                    formControlName='lastName' id='lastName' placeholder="Last Name">
+
+                    <div *ngIf="submitted && s.lastName.errors" class="invalid-feedback" class="alert alert-danger">
+                        <div *ngIf="s.lastName.errors.required">
+                            Last name is required*
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" class="form-control" formControlName='email' 
+                    autocomplete="off" id='email' placeholder="Email Address" required="required"
+                    [ngClass]="{ 'is-invalid': submitted && s.email.errors }" >
+
+                    <div *ngIf="submitted && s.email.errors" class="alert alert-danger">
+                        <div *ngIf="s.email.errors.required">
+                            Email address is required*
+                        </div>
+                        <div *ngIf="s.email.errors.pattern">
+                            Please enter valid email address*
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password" 
+                    required="required" [ngClass]="{ 'is-invalid': submitted && s.password.errors }" 
+                    formControlName='password' id='password'>
+
+                    <div *ngIf="submitted && s.password.errors" class="alert alert-danger">
+                        <div *ngIf="s.password.errors.required">
+                            Password is required*
+                        </div>
+                        <div *ngIf="s.password.errors.pattern">
+                            Password must be 1 uppercase , 1 lowercase & minimum 6 characters*
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block mb-3">
+                        Sign Up
+                    </button>
+                    <hr />
+                    <p>If you have already account</p> 
+                    <a routerLink="/login">
+                        <button class="btn btn-primary btn-block">Login</button>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

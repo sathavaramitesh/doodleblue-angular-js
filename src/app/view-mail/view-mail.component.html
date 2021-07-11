@@ -1,0 +1,35 @@
+<div class="container containerClass">
+    <app-header></app-header>
+    <div class="row">
+      <div class="col-md-2">
+        <app-sidemenu></app-sidemenu>
+      </div>
+      <div class="col-md-10">
+        <div class="email-content">
+            <div class="email-head">
+              <div class="email-head-sender d-flex align-items-center justify-content-between flex-wrap">
+                <div class="d-flex align-items-center">
+                  <div class="sender d-flex align-items-center">
+                    <b>{{mailDetail.subject}}</b>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="email-head email-body">
+              <div class="email-head-sender d-flex align-items-center justify-content-between flex-wrap">
+                <div class="d-flex align-items-center">
+                  <div class="sender d-flex align-items-center">
+                  <p>{{fullName}} to me</p>
+                  </div>
+                </div>
+                <div class="date">{{mailDetail.createdAt}}</div>
+              </div>
+            </div>
+            <div class="email-body">
+             <p>{{mailDetail.text}}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

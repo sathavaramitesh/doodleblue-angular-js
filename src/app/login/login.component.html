@@ -1,0 +1,55 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center mb-3">
+            <span class="login-text">Login</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <form [formGroup]='loginForm' (ngSubmit)="submit()" autocomplete="off">
+                <div class="form-group">
+                    <input type="email" class="form-control" formControlName='email' 
+                    autocomplete="off" id='email' placeholder="Email Address" required="required"
+                    [ngClass]="{ 'is-invalid': submitted && l.email.errors }" >
+
+                    <div *ngIf="submitted && l.email.errors" class="alert alert-danger">
+                        <div *ngIf="l.email.errors.required">
+                            Email address is required*
+                        </div>
+                        <div *ngIf="l.email.errors.pattern">
+                            Please enter valid email address*
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password" 
+                    required="required" [ngClass]="{ 'is-invalid': submitted && l.password.errors }" 
+                    formControlName='password' id='password'>
+
+                    <div *ngIf="submitted && l.password.errors" class="alert alert-danger">
+                        <div *ngIf="l.password.errors.required">
+                            Password is required*
+                        </div>
+                        <div *ngIf="l.password.errors.pattern">
+                            Password must be 1 uppercase , 1 lowercase & minimum 6 characters*
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block mb-3">
+                        Login
+                    </button>
+                    <hr />
+                    <p>Create New Account</p>
+                    <a routerLink="/sign-up">
+                        <button class="btn btn-primary btn-block">Sign Up</button>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

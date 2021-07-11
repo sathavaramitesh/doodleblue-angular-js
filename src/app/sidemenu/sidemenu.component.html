@@ -1,0 +1,43 @@
+<button class="mb-2 btn btn-primary btn-block" (click)="openModal(template, null, null)">Compose</button>
+<button class="mb-2 btn btn-primary btn-block" (click)="btnClick('/inbox');">Inbox</button>
+<button class="btn btn-primary btn-block" (click)="btnClick('/sent');">Sent</button>
+<button class="btn btn-primary btn-block" (click)='logout()'>Logout</button>
+
+<!--Compose Modal-->
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Compose</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="closeModel()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]='composeForm'>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName='to' id='to' placeholder="to">
+          <div *ngIf="submitted && l.to.errors" class="alert alert-danger">
+            <div *ngIf="l.to.errors.required">
+              To is required*
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName='subject' id='subject' placeholder="subject">
+          <div *ngIf="submitted && l.subject.errors" class="alert alert-danger">
+            <div *ngIf="l.subject.errors.required">
+              Subject is required*
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea name="text" class="form-control" id="text" cols="30" rows="10" formControlName='text'></textarea>
+          <div *ngIf="submitted && l.text.errors" class="alert alert-danger">
+            <div *ngIf="l.text.errors.required">
+              Text is required*
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" (click)='sendMail()'>Send</button>
+      </form>
+    </div>
+  </ng-template>
